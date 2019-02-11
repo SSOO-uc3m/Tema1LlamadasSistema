@@ -1,25 +1,21 @@
 **PROBLEMA 4**
 
-Ejemplo sencillo del uso de fork, donde un proceso crea una copia y a continuación se hace un execl para hacer un comando &quot;ls&quot;.   Ejecútelo y vea la salida. ¿Qué ocurre?
+````
+main() 
+{ 
+	int valor_regr=0;
+                
+	printf("Bifurcando el proceso\n");
 
-SOLUCIÓN
+	valor_regr=fork();
 
-main()
+	printf("El id del proceso es %d y el valor devuelto es %d\n",
+		getpid(), valor_regr);
 
-{
+	execl("/bin/ls","ls","-l",0);
 
- int valor\_regr=0;
-
- printf(&quot;Bifurcando el proceso\n&quot;);
-
- valor\_regr=fork();
-
- printf(&quot;El id del proceso es %d y el valor devuelto es %d\n&quot;,
-
-                getpid(), valor\_regr);
-
- execl(&quot;/bin/ls&quot;,&quot;ls&quot;,&quot;-l&quot;,0);
-
-        printf(&quot;Esta linea no es impresa\n&quot;);
-
+	printf("Esta linea no es impresa\n");
 }
+
+````
+
